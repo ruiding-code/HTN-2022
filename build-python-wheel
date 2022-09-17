@@ -1,1 +1,5 @@
 #!/bin/bash; C:/Program\ Files/Git/user/bin/sh.exe
+
+echo "Starting whl build process..."
+
+python -m pip install --no-cache wheel setup-tools
