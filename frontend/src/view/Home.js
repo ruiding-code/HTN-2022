@@ -7,12 +7,13 @@ export function Home() {
     return (
         <div className="App">
             <header className="App-header">
-                Welcome! Please fill out the information below and you can start searching! :)
-                <div className="Test">
-                    <h1>Testing</h1>
+                <div className="Create a Listing">
+                    <h1 id="tms">2 Bedroom Apartment in Downtown Montreal</h1>
                 </div>
-                <TextInput/>
-                <ListingCard/>
+                <div className="Listing Card">
+                    <ListingCard/>
+                </div>
+                
             </header>
         </div>
     );

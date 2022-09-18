@@ -47,7 +47,7 @@ export function ListingCard(props) {
             textAlign="left"
             sx={{ p: 2 }}
         >
-            <div className="address" >Address</div>
+            <div className="address">Address</div>
             <div className="author">Posted by First Last</div>
             <div className="description" >Short term leases allowed. 2 streets down from McGill Univeristy, 4 min from metro station, beautiful 2 bedrooms apartement with 1 bathroom... </div>
             <Grid>
