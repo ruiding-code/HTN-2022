@@ -9,7 +9,8 @@ export function Home() {
 
     useEffect(() => {
         fetch('/browse').then(res => res.json()).then(data => {
-            setListingArray(data.listing);
+            setListingArray(data.listings);
+            console.log(data)
         })
     })
 
