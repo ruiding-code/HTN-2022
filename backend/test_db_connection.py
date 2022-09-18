@@ -1,10 +1,20 @@
 import os
 import psycopg2
+import json
 
-user = os.environ["USERNAME"]
-host = os.environ['HOST']
-cluster = os.environ["CLUSTER"]
-password = os.environ["DATABASE_PW"]
+DB_CREDENTIALS_FILE = "db_secrets.json"
+CUR_DIR = os.path.dirname(__file__)
+CREDENTIALS_PATH = os.path.join(CUR_DIR, DB_CREDENTIALS_FILE)
+
+with open(CREDENTIALS_PATH) as fp:
+    credentials = json.loads(fp.read())
+
+print(credentials)
+
+user = credentials["DB_USERNAME"]
+host = credentials['HOST']
+cluster = credentials["CLUSTER"]
+password = credentials["DB_PASSWORD"]
 
 # Test Psycopg2
 conn = psycopg2.connect(user=user,
@@ -17,22 +27,3 @@ with conn.cursor() as cur:
     res = cur.fetchall()
     conn.commit()
     print(res)
-
-# Test PonyORM
-from pony.orm import Database, db_session
-
-db = Database()
-db_params = dict(provider='cockroach',
-                 user=user,
-                 host=host,
-                 port=26257,
-                 database=f'{cluster}.defaultdb',
-                 password=password)
-
-db.bind(**db_params)  # Bind Database object to the real database
-
-@db_session
-def test():
-    res = db.select('SELECT now()')
-    print(res)
-test()
