@@ -1,5 +1,7 @@
+import { ListingCard } from '../components/ListingCard';
+import { TextInput } from '../components/TextInput';
 import '../style/Home.css';
-import Typist from 'react-typist';
+
 
 export function Home() {
     return (
@@ -9,6 +11,8 @@ export function Home() {
                 <div className="Test">
                     <h1>Testing</h1>
                 </div>
+                <TextInput/>
+                <ListingCard/>
             </header>
         </div>
     );
