@@ -20,7 +20,6 @@ export function Home() {
                     image = {post.image}
                     description = {post.description}
                     address = {post.address}
-                    authorId = {post.authorId}
                 />
             })
         )

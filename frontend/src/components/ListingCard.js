@@ -66,7 +66,6 @@ export function ListingCard(props) {
                 sx={{ p: 2 }}
             >
                 <div className="address" >{props.address}</div>
-                <div className="author">Posted by {props.authorId}</div>
                 <div className="description" >{props.description}</div>
                 <Grid>
                     <IconButton onClick={() => likeMechanism()}>
@@ -113,7 +112,6 @@ export function ListingCard(props) {
                     <p className='specification'>Lease Length: 1,3,4,9, 12</p>
                     <p className='specification'>7 People interested</p>
                     <p className='specification'>Posted on: May 15 2022</p>
-                    <p className='specification'>Posted by" Meg Chang</p>
                 </div>
 
             </div>
