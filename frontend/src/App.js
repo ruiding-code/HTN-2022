@@ -1,40 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
+import { paths } from './utils/constants';
+import { Home } from './view/Home';
 
 function App() {
-
-  const [currentTime, setCurrentTime] = useState(0);
-
-  // connect to data from flask server endpoints
-  // this is connected to the /home endpoint
-  useEffect(() => {
-    fetch('/home').then(res => res.json()).then(data => {
-      setCurrentTime(data.time);
-    });
-  }, []);
-
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>
-          The current time is {currentTime}
-        </p>
-      </header>
-    </div>
+    <>
+    <Router>
+        <Routes>
+          <Route path={paths.HOME} element={<Home/>} />
+        </Routes>
+    </Router>
+    </>
   );
 }
 
