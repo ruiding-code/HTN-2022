@@ -1,14 +1,18 @@
 from flask import Flask, render_template
 from datetime import datetime
+import math
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET"])
-def hello():
-    return render_template("index.html")
+@app.route("/")
+def home():
+    return {}
 
-@app.route("/home", methods=["GET", "POST"])
-def get_listings():
+@app.route("/browse", methods=["GET"])
+def getBrowsingListings(maxPrice: int = math.inf, minPrice: int = 0, numBeds: int = None, numBaths: int = None, \
+    region: str = None, sortMethod: str = "popularity"):
+
+    
 
     """
     This app will show available rentals
