@@ -9,8 +9,9 @@ export function TextInput() {
         type="text"
         fullWidth
         autoComplete='off'
-        style={{background: "white", borderRadius: 50, paddingLeft:50, paddingRight:50}}
-        placeholder={"Enter text here..."}
+
+        style={{background: "white", borderRadius: 50, paddingLeft:10, paddingRight:10}}
+        placeholder={""}
     />
   );
 }

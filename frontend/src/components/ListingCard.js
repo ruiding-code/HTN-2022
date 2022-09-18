@@ -60,9 +60,6 @@ export function ListingCard(props) {
             </Grid>
         </Grid>
       </Grid>
-
-
-      
     </div>
   );
 }
