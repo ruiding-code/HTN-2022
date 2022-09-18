@@ -1,18 +1,41 @@
+import React, { useEffect, useState } from "react";
 import { ListingCard } from '../components/ListingCard';
-import { TextInput } from '../components/TextInput';
 import '../style/Home.css';
 
 
 export function Home() {
+
+    const [listingArray, setListingArray] = useState(null);
+
+    useEffect(() => {
+        fetch('/browse').then(res => res.json()).then(data => {
+            setListingArray(data.listing);
+        })
+    })
+
+    const renderCards = () => {
+        return (
+            listingArray.map((post) => {
+                <ListingCard
+                    image = {post.image}
+                    description = {post.description}
+                    address = {post.address}
+                    authorId = {post.authorId}
+                />
+            })
+        )
+    }
+
     return (
         <div className="App">
             <header className="App-header">
-                Welcome! Please fill out the information below and you can start searching! :)
-                <div className="Test">
-                    <h1>Testing</h1>
-                </div>
-                <TextInput/>
-                <ListingCard/>
+                Welcome! Let's start searching!
+                {listingArray == null ? 
+                    <h1> No result found :(. Please try again later.</h1>
+                :
+                    renderCards()
+                }
+                
             </header>
         </div>
     );
