@@ -6,8 +6,6 @@ DB_CREDENTIALS_FILE = "db_secrets.json"
 CUR_DIR = os.path.dirname(__file__)
 CREDENTIALS_PATH = os.path.join(CUR_DIR, DB_CREDENTIALS_FILE)
 
-print(CREDENTIALS_PATH)
-
 with open(CREDENTIALS_PATH) as fp:
     credentials = json.loads(fp.read())
 
