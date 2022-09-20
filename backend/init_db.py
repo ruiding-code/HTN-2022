@@ -29,23 +29,20 @@ connection.set_session(autocommit=True)
 cursor = connection.cursor()
 
 create_listings = """
-CREATE TABLE listings (
+CREATE TABLE listings2 (
     listing_id SERIAL PRIMARY KEY,
     listing_name STRING,
     address STRING,
     region STRING,
     description STRING,
-    in_person_viewing BOOL,
-    online_viewing BOOL,
-    furnished BOOL,
-    posting_date DATE,
-    price FLOAT,
+    in_person_viewing STRING,
+    online_viewing STRING,
+    furnished STRING,
+    posting_date STRING,
+    price STRING,
     image_address STRING,
     lease_lengths STRING,
-    poster_id INT,
-
-    CONSTRAINT FK_poster_id FOREIGN KEY(poster_id)
-        REFERENCES users(user_id)
+    poster_id STRING
 )
 """
 
@@ -74,6 +71,6 @@ CREATE TABLE likes (
 """
 
 
-cursor.execute(create_users)
+#cursor.execute(create_users)
 cursor.execute(create_listings)
-cursor.execute(create_likes)
+#cursor.execute(create_likes)
