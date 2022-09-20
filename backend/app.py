@@ -33,14 +33,16 @@ connection = psycopg2.connect(user=user,
 # Set to automatically commit each statement
 connection.set_session(autocommit=True)
 
-cursor = connection.cursor(cursor_factory=psycopg2extras.RealDictCursor)
+cursor = connection.cursor()
 
 
 def dbCreateListing(listingName: str, address: str, region: str, inPersonViewing: str, onlineViewing: str,
                         postingDate: str, leaseLength: str, price: str,
                         description: str, furnished: str, image: str):
+
+
     cursor.execute(
-        "INSERT INTO listings ( \
+        "INSERT INTO listings2 ( \
             listing_name, \
             address, \
             region, \
@@ -52,8 +54,8 @@ def dbCreateListing(listingName: str, address: str, region: str, inPersonViewing
             price, \
             image_address, \
             lease_lengths \
-        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING listing_id",
-        (listingName, address, region, description, inPersonViewing, onlineViewing, furnished,
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING listing_id", \
+            (listingName, address, region, description, inPersonViewing, onlineViewing, furnished, \
                         postingDate, price, image, leaseLength))
     result = cursor.fetchall()
     return result
@@ -71,8 +73,8 @@ def dbGetBrowsingListings(filters: dict, maxPrice: int = 100000, minPrice: int =
         sortMethod = filters["sortMethod"]
 
     cursor.execute(
-        'SELECT * FROM listings WHERE price <= %s AND price >= %s AND region = %s',
-        (maxPrice, minPrice, region))
+        'SELECT * FROM listings'
+        )
 
     unfiltered_listings = cursor.fetchall()
 
@@ -117,6 +119,8 @@ def addListing():
 
 
     body = request.get_json()
+
+    print(body)
 
     listingName = body["listingName"]
     address = body["address"]
